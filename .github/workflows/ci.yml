@@ -1,0 +1,44 @@
+name: MLOps CI Pipeline
+
+on:
+  push:
+    paths:
+      - "src/**"
+      - "tests/**"
+      - "data/**"
+      - "Makefile"
+      - "requirements.txt"
+  pull_request:
+    paths:
+      - "src/**"
+      - "tests/**"
+      - "data/**"
+      - "Makefile"
+      - "requirements.txt"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.8"
+
+      - name: Install Dependencies
+        run: |
+          pip install -r requirements.txt
+          pip install flake8 pytest
+
+      - name: Lint Code
+        run: make lint
+
+      - name: Run Tests
+        run: make test
+
+      - name: Train Model
+        run: make train
