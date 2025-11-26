@@ -1,8 +1,17 @@
-pandas
-numpy
-xgboost
-scikit-learn
-feature-engine
-joblib
+# Core ML dependencies
+numpy>=1.21.0
+pandas>=1.3.0
+scikit-learn>=1.0.0
 matplotlib
-seaborn
+jupyter
+mlflow
+fastapi
+uvicorn
+joblib>=1.0.0
+feature-engine>=1.2.0
+
+# CI/CD and code quality tools
+flake8>=4.0.0
+black>=22.0.0
+bandit>=1.7.0
+pytest>=6.0.0
