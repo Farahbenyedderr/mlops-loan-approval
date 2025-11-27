@@ -1,4 +1,4 @@
-PYTHON = python3
+PYTHON = python
 MAIN = src/main.py
 MODEL_DIR = models
 
