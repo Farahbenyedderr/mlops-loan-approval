@@ -1,24 +1,61 @@
-PYTHON = python3
-MAIN = src/main.py
-MODEL_DIR = models
+# ============================
+#         MAKEFILE
+# ============================
 
+PYTHON=python3
+PIP=pip
+MAIN=main.py
+TEST=test.py
+REQ=requirements.txt
+
+# ----------------------------
+# Install dependencies
+# ----------------------------
 install:
-	$(PYTHON) -m pip install --upgrade pip
-	$(PYTHON) -m pip install -r requirements.txt
-	$(PYTHON) -m pip install flake8 pytest
+	$(PIP) install -r $(REQ)
 
+# ----------------------------
+# Run the training pipeline
+# ----------------------------
 train:
-	$(PYTHON) $(MAIN)
+	$(PYTHON) $(MAIN) --train
 
-run: train
+# ----------------------------
+# Validate a saved model
+# ----------------------------
+validate:
+	$(PYTHON) $(MAIN) --validate
 
-clean:
-	rm -f $(MODEL_DIR)/*.pkl
-
-lint:
-	flake8 src/ --max-line-length=120
-
+# ----------------------------
+# Run the entire test suite
+# ----------------------------
 test:
-	pytest -q tests/
+	$(PYTHON) $(TEST)
 
-ci: lint test train
+# ----------------------------
+# Format code automatically
+# ----------------------------
+format:
+	black .
+	isort .
+
+# ----------------------------
+# Lint code (optional)
+# ----------------------------
+lint:
+	flake8 .
+
+# ----------------------------
+# Clean temporary files
+# ----------------------------
+clean:
+	find . -type d -name "__pycache__" -exec rm -rf {} +
+	find . -type d -name ".pytest_cache" -exec rm -rf {} +
+	rm -f *.pkl
+	rm -f test_model.pkl
+	rm -rf models/*.pkl
+
+# ----------------------------
+# Full rebuild (clean + reinstall + train)
+# ----------------------------
+rebuild: clean install train
