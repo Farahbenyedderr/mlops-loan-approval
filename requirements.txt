@@ -1,8 +1,15 @@
 pandas
 numpy
-xgboost
 scikit-learn
 feature-engine
 joblib
 matplotlib
 seaborn
+bandit
+black 
+isort
+uvicorn 
+fastapi
+pydantic
+mlflow
+sqlalchemy

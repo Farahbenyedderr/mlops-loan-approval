@@ -1,0 +1,22 @@
+artifact_path: file:///C:/Users/Mohamed/Desktop/mlops-loan-approval/mlruns/1/models/m-58b38e48a7ea40ac86c30ead244ea36b/artifacts
+flavors:
+  python_function:
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.pkl
+    predict_fn: predict
+    python_version: 3.10.11
+  sklearn:
+    code: null
+    pickled_model: model.pkl
+    serialization_format: cloudpickle
+    sklearn_version: 1.7.2
+mlflow_version: 3.7.0
+model_id: m-58b38e48a7ea40ac86c30ead244ea36b
+model_size_bytes: 6258767
+model_uuid: m-58b38e48a7ea40ac86c30ead244ea36b
+prompts: null
+run_id: af39555e30b7467f93c3b1beac20e076
+utc_time_created: '2025-12-22 23:09:25.103829'

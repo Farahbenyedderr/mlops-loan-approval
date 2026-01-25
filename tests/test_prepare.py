@@ -1,5 +1,7 @@
-from src.model import prepare_data
 import pandas as pd
+
+from src.model import prepare_data
+
 
 def test_prepare_outputs_df():
     df = pd.read_csv("data/loan_data.csv")
